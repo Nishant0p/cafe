@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="so">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Cafe</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Google Fonts: Inter and Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700&display=swap"
+    rel="stylesheet">
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+  <header class="header">
+    <nav class="nav container">
+      <a href="#" class="logo">
+        <i class="fas fa-coffee"></i> Test Cafe
+      </a>
+      <ul class="nav-menu">
+        <li><a href="#menu" class="nav-link">Menu</a></li>
+        <li><a href="#combo" class="nav-link">Combo Set</a></li>
+      </ul>
+      <button type="button" class="cart-indicator" id="cartToggle" aria-label="Cart items count" aria-expanded="false">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </nav>
+    <div class="container cart-panel" id="cartPanel" aria-label="Selected items in cart" hidden>
+      <div class="cart-panel-header">
+        <h3>Your Cart</h3>
+        <div class="cart-panel-actions">
+          <span class="cart-total" id="cartTotal">₹0</span>
+          <button type="button" class="cart-close" id="cartClose" aria-label="Close cart">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <ul class="cart-items" id="cartItems">
+        <li class="cart-empty" id="cartEmpty">No items selected yet.</li>
+      </ul>
+      <div class="cart-footer">
+        <button type="button" class="btn btn-primary cart-pay" id="cartPay">Proceed to Payment</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="menu section" id="menu">
+    <div class="container">
+
+      <!-- Menu Tabs -->
+      <div class="menu-tabs reveal">
+        <div class="menu-tab active" data-target="coffee">Coffee</div>
+        <div class="menu-tab" data-target="pizza">Pizza</div>
+        <div class="menu-tab" data-target="shake">Shake</div>
+        <div class="menu-tab" data-target="pasta">Pasta</div>
+      </div>
+
+      <!-- Menu Content Grid -->
+      <div class="menu-grid" id="menu-grid">
+        <div class="menu-item reveal" data-category="coffee">
+          <div class="menu-img-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=900&auto=format&fit=crop"
+              alt="Cappuccino Coffee">
+          </div>
+          <div class="menu-details">
+            <div class="menu-header">
+              <h3>Cappuccino Coffee</h3>
+              <span class="price">₹324</span>
+            </div>
+            <p>Rich espresso topped with silky foam and a smooth finish.</p>
+            <button class="add-to-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+
+          <div class="menu-item reveal delay-1" data-category="coffee">
+          <div class="menu-img-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=900&auto=format&fit=crop"
+              alt="Espresso Macchiato">
+          </div>
+          <div class="menu-details">
+            <div class="menu-header">
+              <h3>Espresso Macchiato</h3>
+              <span class="price">₹340</span>
+            </div>
+            <p>Bold espresso with a light touch of steamed milk.</p>
+            <button class="add-to-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+
+          <div class="menu-item reveal delay-2" data-category="coffee">
+          <div class="menu-img-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?q=80&w=900&auto=format&fit=crop"
+              alt="Iced Latte">
+          </div>
+          <div class="menu-details">
+            <div class="menu-header">
+              <h3>Iced Latte</h3>
+              <span class="price">₹374</span>
+            </div>
+            <p>Chilled coffee with smooth milk and a crisp finish.</p>
+            <button class="add-to-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+
+          <div class="menu-item reveal delay-2" data-category="coffee">
+          <div class="menu-img-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=900&auto=format&fit=crop"
+              alt="Cappuccino with Cinnamon">
+          </div>
+          <div class="menu-details">
+            <div class="menu-header">
+              <h3>Cappuccino with Cinnamon</h3>
+              <span class="price">₹357</span>
+            </div>
+            <p>Classic cappuccino finished with a warm cinnamon note.</p>
+            <button class="add-to-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+
+          <div class="menu-item reveal delay-2" data-category="coffee">
+          <div class="menu-img-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1521302080334-4bebac2763a6?q=80&w=900&auto=format&fit=crop"
+              alt="Flat White">
+          </div>
+          <div class="menu-details">
+            <div class="menu-header">
+              <h3>Flat White</h3>
+              <span class="price">₹353</span>
+            </div>
+            <p>Velvety microfoam over a smooth double espresso shot.</p>
+            <button class="add-to-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+
+          <div class="menu-item reveal delay-2" data-category="coffee">
+          <div class="menu-img-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1494415859740-21e878dd929d?q=80&w=900&auto=format&fit=crop"
+              alt="Mocha Coffee">
+          </div>
+          <div class="menu-details">
+            <div class="menu-header">
+              <h3>Mocha Coffee</h3>
+              <span class="price">₹398</span>
+            </div>
+            <p>Sweet chocolate coffee topped with whipped cream.</p>
+            <button class="add-to-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+
+          <div class="menu-item reveal delay-2" data-category="coffee">
+          <div class="menu-img-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1485808191679-5f86510681a2?q=80&w=900&auto=format&fit=crop"
+              alt="Americano Coffee">
+          </div>
+          <div class="menu-details">
+            <div class="menu-header">
+              <h3>Americano Coffee</h3>
+              <span class="price">₹299</span>
+            </div>
+            <p>Smooth black coffee with a clean and bold taste.</p>
+            <button class="add-to-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+
+          <div class="menu-item reveal delay-2" data-category="coffee">
+          <div class="menu-img-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=900&auto=format&fit=crop"
+              alt="Cold Brew Coffee">
+          </div>
+          <div class="menu-details">
+            <div class="menu-header">
+              <h3>Cold Brew Coffee</h3>
+              <span class="price">₹390</span>
+            </div>
+            <p>Slow-steeped coffee served cold for a smooth kick.</p>
+            <button class="add-to-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+
+        <div class="menu-item reveal delay-1" data-category="pizza" style="display:none;">
+          <div class="menu-img-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=900&auto=format&fit=crop"
+              alt="Margherita Pizza">
+          </div>
+          <div class="menu-details">
+            <div class="menu-header">
+              <h3>Margherita Pizza</h3>
+              <span class="price">₹706</span>
+            </div>
+            <p>Classic pizza with tomato sauce, mozzarella, and fresh basil.</p>
+            <button class="add-to-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+
+        <div class="menu-item reveal delay-2" data-category="pizza" style="display:none;">
+          <div class="menu-img-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=900&auto=format&fit=crop"
+              alt="Pepperoni Pizza">
+          </div>
+          <div class="menu-details">
+            <div class="menu-header">
+              <h3>Pepperoni Pizza</h3>
+              <span class="price">₹780</span>
+            </div>
+            <p>Loaded with pepperoni slices and melted cheese.</p>
+            <button class="add-to-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+
+        <div class="menu-item reveal delay-2" data-category="pizza" style="display:none;">
+          <div class="menu-img-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?q=80&w=900&auto=format&fit=crop"
+              alt="Veggie Pizza">
+          </div>
+          <div class="menu-details">
+            <div class="menu-header">
+              <h3>Veggie Pizza</h3>
+              <span class="price">₹739</span>
+            </div>
+            <p>Fresh vegetables, tomato sauce, and golden cheese.</p>
+            <button class="add-to-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+
+        <div class="menu-item reveal delay-2" data-category="pizza" style="display:none;">
+          <div class="menu-img-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1604382355076-af4b0eb60143?q=80&w=900&auto=format&fit=crop"
+              alt="BBQ Chicken Pizza">
+          </div>
+          <div class="menu-details">
+            <div class="menu-header">
+              <h3>BBQ Chicken Pizza</h3>
+              <span class="price">₹847</span>
+            </div>
+            <p>Smoky barbecue sauce with tender chicken and onions.</p>
+            <button class="add-to-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+
+        <div class="menu-item reveal delay-2" data-category="pizza" style="display:none;">
+          <div class="menu-img-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1518259562796-98b3a5b6b0d5?q=80&w=900&auto=format&fit=crop"
+              alt="Cheese Pizza">
+          </div>
+          <div class="menu-details">
+            <div class="menu-header">
+              <h3>Cheese Pizza</h3>
+              <span class="price">₹664</span>
+            </div>
+            <p>Simple, cheesy, and baked until perfectly golden.</p>
+            <button class="add-to-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+
+        <div class="menu-item reveal delay-2" data-category="pizza" style="display:none;">
+          <div class="menu-img-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1548365328-9f547fb095b3?q=80&w=900&auto=format&fit=crop"
+              alt="Supreme Pizza">
+          </div>
+          <div class="menu-details">
+            <div class="menu-header">
+              <h3>Supreme Pizza</h3>
+              <span class="price">₹913</span>
+            </div>
+            <p>A loaded pizza with pepper, olives, onions, and sausage.</p>
+            <button class="add-to-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+
+        <div class="menu-item reveal delay-1" data-category="shake" style="display:none;">
+          <div class="menu-img-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=900&auto=format&fit=crop"
+              alt="Strawberry Milkshake">
+          </div>
+          <div class="menu-details">
+            <div class="menu-header">
+              <h3>Strawberry Milkshake</h3>
+              <span class="price">₹432</span>
+            </div>
+            <p>Cold, creamy, and blended with fresh strawberry flavor.</p>
+            <button class="add-to-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+
+        <div class="menu-item reveal delay-2" data-category="shake" style="display:none;">
+          <div class="menu-img-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1501139083538-0139583c060f?q=80&w=900&auto=format&fit=crop"
+              alt="Chocolate Shake">
+          </div>
+          <div class="menu-details">
+            <div class="menu-header">
+              <h3>Chocolate Shake</h3>
+              <span class="price">₹448</span>
+            </div>
+            <p>Thick chocolate shake with a rich dessert-style taste.</p>
+            <button class="add-to-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+
+        <div class="menu-item reveal delay-2" data-category="shake" style="display:none;">
+          <div class="menu-img-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=900&auto=format&fit=crop"
+              alt="Mango Shake">
+          </div>
+          <div class="menu-details">
+            <div class="menu-header">
+              <h3>Mango Shake</h3>
+              <span class="price">₹423</span>
+            </div>
+            <p>Refreshing mango blend with a smooth tropical flavor.</p>
+            <button class="add-to-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+
+        <div class="menu-item reveal delay-2" data-category="shake" style="display:none;">
+          <div class="menu-img-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?q=80&w=900&auto=format&fit=crop"
+              alt="Vanilla Shake">
+          </div>
+          <div class="menu-details">
+            <div class="menu-header">
+              <h3>Vanilla Shake</h3>
+              <span class="price">₹398</span>
+            </div>
+            <p>Classic vanilla shake with a smooth creamy finish.</p>
+            <button class="add-to-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+
+        <div class="menu-item reveal delay-2" data-category="shake" style="display:none;">
+          <div class="menu-img-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1553530666-ba11a7da3888?q=80&w=900&auto=format&fit=crop"
+              alt="Banana Shake">
+          </div>
+          <div class="menu-details">
+            <div class="menu-header">
+              <h3>Banana Shake</h3>
+              <span class="price">₹407</span>
+            </div>
+            <p>Sweet banana shake blended for a soft, creamy texture.</p>
+            <button class="add-to-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+
+        <div class="menu-item reveal delay-2" data-category="shake" style="display:none;">
+          <div class="menu-img-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1550715557-3f6b0a2d0a88?q=80&w=900&auto=format&fit=crop"
+              alt="Oreo Shake">
+          </div>
+          <div class="menu-details">
+            <div class="menu-header">
+              <h3>Oreo Shake</h3>
+              <span class="price">₹465</span>
+            </div>
+            <p>Chocolate cookie shake topped with a creamy swirl.</p>
+            <button class="add-to-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+
+        <div class="menu-item reveal delay-1" data-category="pasta" style="display:none;">
+          <div class="menu-img-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?q=80&w=900&auto=format&fit=crop"
+              alt="Creamy Pasta">
+          </div>
+          <div class="menu-details">
+            <div class="menu-header">
+              <h3>Creamy Pasta</h3>
+              <span class="price">₹647</span>
+            </div>
+            <p>Soft pasta tossed in a creamy garlic sauce with herbs.</p>
+            <button class="add-to-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+
+        <div class="menu-item reveal delay-2" data-category="pasta" style="display:none;">
+          <div class="menu-img-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?q=80&w=900&auto=format&fit=crop"
+              alt="Spaghetti Bolognese">
+          </div>
+          <div class="menu-details">
+            <div class="menu-header">
+              <h3>Spaghetti Bolognese</h3>
+              <span class="price">₹696</span>
+            </div>
+            <p>Hearty spaghetti with savory meat sauce and parmesan.</p>
+            <button class="add-to-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+
+        <div class="menu-item reveal delay-2" data-category="pasta" style="display:none;">
+          <div class="menu-img-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?q=80&w=900&auto=format&fit=crop"
+              alt="Pesto Pasta">
+          </div>
+          <div class="menu-details">
+            <div class="menu-header">
+              <h3>Pesto Pasta</h3>
+              <span class="price">₹672</span>
+            </div>
+            <p>Fresh basil pesto with tender pasta and grated cheese.</p>
+            <button class="add-to-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+
+        <div class="menu-item reveal delay-2" data-category="pasta" style="display:none;">
+          <div class="menu-img-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1608219992759-8d74ed8d76eb?q=80&w=900&auto=format&fit=crop"
+              alt="Carbonara Pasta">
+          </div>
+          <div class="menu-details">
+            <div class="menu-header">
+              <h3>Carbonara Pasta</h3>
+              <span class="price">₹722</span>
+            </div>
+            <p>Creamy carbonara with smoky flavor and black pepper.</p>
+            <button class="add-to-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+
+        <div class="menu-item reveal delay-2" data-category="pasta" style="display:none;">
+          <div class="menu-img-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?q=80&w=900&auto=format&fit=crop"
+              alt="Chicken Alfredo Pasta">
+          </div>
+          <div class="menu-details">
+            <div class="menu-header">
+              <h3>Chicken Alfredo Pasta</h3>
+              <span class="price">₹764</span>
+            </div>
+            <p>Grilled chicken served over pasta in a rich Alfredo sauce.</p>
+            <button class="add-to-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+
+        <div class="menu-item reveal delay-2" data-category="pasta" style="display:none;">
+          <div class="menu-img-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?q=80&w=900&auto=format&fit=crop"
+              alt="Tomato Basil Pasta">
+          </div>
+          <div class="menu-details">
+            <div class="menu-header">
+              <h3>Tomato Basil Pasta</h3>
+              <span class="price">₹660</span>
+            </div>
+            <p>Light tomato sauce with basil and a fresh homemade taste.</p>
+            <button class="add-to-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="combo section" id="combo">
+    <div class="container combo-container">
+      <div class="combo-image reveal scale-up">
+        <img
+          src="https://images.unsplash.com/photo-1724198218799-da402b765fd3?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Signature Combo">
+        <div class="discount-badge">-20%</div>
+      </div>
+      <div class="combo-text reveal slide-in-right">
+        <span class="tag">Special Offer</span>
+        <h2>Today's Favorite: <br> Iced Latte + Donut</h2>
+        <p>Try our most popular combo. You get a chilled iced latte and a fresh donut baked today.</p>
+        <div class="price-box">
+          <span class="original-price">₹830</span>
+          <span class="new-price">₹664</span>
+        </div>
+        <button class="btn btn-primary combo-cta add-to-cart" data-item-name="Today's Favorite Combo" data-item-price="664">
+          Order Special Combo
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
